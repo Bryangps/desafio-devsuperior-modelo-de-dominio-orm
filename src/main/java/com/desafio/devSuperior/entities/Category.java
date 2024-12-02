@@ -2,6 +2,8 @@ package com.desafio.devSuperior.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -13,6 +15,9 @@ public class Category {
     private Integer id;
 
     private String description;
+
+    @OneToMany(mappedBy = "category")
+    private List<Activity> activities = new ArrayList<>();
 
     public Category(){
     }
