@@ -28,6 +28,12 @@ public class Activity {
     @OneToMany(mappedBy = "activity")
     private Set<Block> blocks = new HashSet<>();
 
+    @ManyToMany
+    @JoinTable(name = "tb_activity_participant",
+    joinColumns = @JoinColumn(name = "activity_id"),
+    inverseJoinColumns = @JoinColumn(name = "participant_id"))
+    private Set<Participant> participants = new HashSet<>();
+
     public Activity(){
     }
 
@@ -69,6 +75,22 @@ public class Activity {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Set<Block> getBlocks() {
+        return blocks;
+    }
+
+    public Set<Participant> getParticipants() {
+        return participants;
     }
 
     @Override
